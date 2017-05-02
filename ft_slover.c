@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   ft_slover.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/18 16:12:39 by ycao              #+#    #+#             */
-/*   Updated: 2017/04/18 16:14:18 by ycao             ###   ########.fr       */
+/*   Created: 2017/05/01 14:56:02 by ycao              #+#    #+#             */
+/*   Updated: 2017/05/01 14:56:25 by ycao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
+#include "fillit"
 
-typedef struct  s_list
+int     ft_slover_check(char a_data, char b_map)
 {
-    char            *data;
-    int             topleft;
-    int             topright;
-    int             bottomleft;
-    int             bottomright;
-    struct  s_list  *next;
-}               t_data;
+    if(b_map == '.')
+        return (a_data);
+    if(b_map != '.' && a_data != '.')
+        return (0);
+    if(b_map != '.' && a_data == '.')
+        return (b_map);
+
+}
+
+int     ft_slover_fill(t_data workeddata, char **map, int i, int j)
+{
+    char    **temmap;
+    while ()
+    //temmap = map;
 
 
+}

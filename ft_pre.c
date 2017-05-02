@@ -12,7 +12,11 @@
 
 #include "fillit.h"
 
-char **ft_pre_list(char* buf)
+t_data	workeddata;
+
+char	**map;
+
+char	**ft_pre_list(char* buf)
 {
 	char**	list[4][4];
 	int		i;
