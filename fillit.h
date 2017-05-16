@@ -15,7 +15,7 @@
 
 typedef struct  s_list
 {
-    char            *data;
+    char            **data[4][4];
     int             topleft;
     int             topright;
     int             bottomleft;
@@ -23,4 +23,8 @@ typedef struct  s_list
     struct  s_list  *next;
 }               t_data;
 
-
+typedef struct  s_list
+{
+    char            **data[4][4];
+    struct  s_list  *next;
+}               t_list;

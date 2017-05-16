@@ -23,9 +23,24 @@ int     ft_slover_check(char a_data, char b_map)
 
 }
 
+/* find the longest line*/
+int     ft_longestline(t_data workeddata)
+{
+    int     n;
+
+XXXXXXXXXXX
+
+    return (n);
+}
+
 int     ft_slover_fill(t_data workeddata, char **map, int i, int j)
 {
     char    **temmap;
+    int     n;
+
+    n = ft_longestline(t_data workeddata);
+    /* initial map for n line*/
+
     while ()
     //temmap = map;
 
