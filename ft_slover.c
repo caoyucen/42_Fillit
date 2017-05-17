@@ -12,6 +12,14 @@
 
 #include "fillit"
 
+t_data  ft_cleandate(t_list list)
+{
+    t_data cdata;
+
+
+    return (cdata);
+}
+
 int     ft_slover_check(char a_data, char b_map)
 {
     if(b_map == '.')
@@ -20,7 +28,6 @@ int     ft_slover_check(char a_data, char b_map)
         return (0);
     if(b_map != '.' && a_data == '.')
         return (b_map);
-
 }
 
 /* find the longest line*/

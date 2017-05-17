@@ -10,21 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FILLIT_H
+# define FILLIT_H
 #include <unistd.h>
 #include <stdlib.h>
 
-typedef struct  s_list
+typedef struct  s_data
 {
-    char            **data[4][4];
-    int             topleft;
-    int             topright;
-    int             bottomleft;
-    int             bottomright;
-    struct  s_list  *next;
+    char            **tetr[4][4];
+    int             *point[4]; /* min i, min j, max i, max j */
+    struct  s_data  *next;
 }               t_data;
 
 typedef struct  s_list
 {
-    char            **data[4][4];
+    char            **tetr[4][4];
     struct  s_list  *next;
 }               t_list;
+
+int             num;
+
+#endif

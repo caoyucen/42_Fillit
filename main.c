@@ -12,8 +12,34 @@
 
 #include "fillit.h"
 
+t_list	ft_init_list(t_list *list)
+{
+	list = (t_list*)malloc(sizeof(t_list));
+	if (!list)
+		return (NULL)
+	list->next = NULL;
+	return (list);
+}
+
+void	fillit(int argc, char** argv)
+{
+	t_list	*list;
+
+	list = ft_init_list(list);
+	if (argc == 2)
+	{
+		if ((list = ft_pre_openfile(argv[1], list) != NULL)
+		{
+
+
+			return;
+		}
+	}
+	ft_putstr("error/n");
+}
+
 int		main(int argc, char** argv)
 {
-	if (argc != 2)
-		ft_putstr("error/n");
-
+	fillit(argc, argv);
+	return (0);
+}
