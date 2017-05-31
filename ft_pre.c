@@ -28,9 +28,9 @@ t_list	*ft_pre_newlist(t_list *list)
 	newlist = (t_list*)malloc(sizeof(t_list));
 	if (!newlist)
 		return (NULL);
-	newlist->next = NULL; 
+	newlist->next = NULL;
 	list->next = newlist;
-	list = newlist; 
+	list = newlist;
 	return (list);
 }
 
@@ -104,7 +104,7 @@ t_list	*ft_pre_readfile(t_list *list, int fd, int num)
 	if (lastret != 20 || ret != 0)
 		return (NULL);
 	return (start);
-}			
+}
 
 /* this part is to make t_list to t_data */
 
@@ -118,7 +118,7 @@ t_data	*ft_init_data(t_data *data)
 	i = -1;
 	while (++i < 4)
 		data->point[i] = 0;
-	data->next = NULL; 
+	data->next = NULL;
 	return (data);
 }
 
@@ -133,10 +133,23 @@ t_data	*ft_pre_newdata(t_data *data)
 	i = -1;
 	while (++i < 4)
 		newdata->point[i] = 0;
-	newdata->next = NULL; 
+	newdata->next = NULL;
 	data->next = newdata;
 	data = newdata; /* I have problem here */
 	return (data);
+}
+
+int		*ft_list_to_data_point(t_data data, int i, int j)
+{
+	if(data->point[0] > i)
+		data->point[0] = i;
+	if(data->point[1] > j)
+		data->point[1] = j;
+	if(data->point[2] < i)
+		data->point[2] = i;
+	if(data->point[3] < j)
+		data->point[3] = j;
+	return(data);
 }
 
 t_data *ft_list_to_data(t_list list, t_data data)
@@ -151,14 +164,9 @@ t_data *ft_list_to_data(t_list list, t_data data)
 	{
 		while (++j < 4)
 		{
+			t_data->tetr[i][j] = t_list->tetr[i][j];
 			if (list->tetr[i][j] == '#')
-			{
-				data->point[0] = i;
-				data->point[1] = j;
-			}
-
+				data = ft_list_to_data_point(data, i, j); /*this part is not sure */
 		}
-
 	}
-
-}
+} /* next didn't copy here */
