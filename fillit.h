@@ -17,17 +17,15 @@
 
 typedef struct  s_data
 {
-    char            **tetr[4][4];
-    int             *point[4]; /* min i, min j, max i, max j */
+    char            tetr[4][4];
+    int             point[4]; /* min i, min j, max i, max j */
     struct  s_data  *next;
 }               t_data;
 
 typedef struct  s_list
 {
-    char            **tetr[4][4];
+    char            tetr[4][4];
     struct  s_list  *next;
 }               t_list;
-
-int             num;
 
 #endif

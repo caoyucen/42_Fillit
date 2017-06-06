@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "global.h"
 
 t_list	ft_init_list(t_list *list)
 {
@@ -69,26 +70,13 @@ char	**ft_pre_buf(char* buf, t_list *list, int ret)
 	return (list);
 }
 
-t_list *ft_pre_openfile(char *filename, t_list *list)
-{
-	int fd;
-	if ((fd = open(filename, O_RDONLY)) < 0)
-		return (NULL);
-	if ((fd = open(filename, O_DIRECTORY)) >= 0)
-		return (NULL);
-	if ((list = ft_pre_readfile(list, fd, num)) == NULL)
-		return (NULL);
-	return (list);
-}
-
-t_list	*ft_pre_readfile(t_list *list, int fd, int num)
+t_list	*ft_pre_readfile(t_list *list, int fd)
 {
 	int		ret;
 	int		lastret;
 	char	*buf;
 	t_list	*start;
 
-	num = 0;
 	buf = ft_strnew(21);
 	start = list; /* I have question here */
 	while ((ret = read(fd, buf, 21)))
@@ -106,67 +94,16 @@ t_list	*ft_pre_readfile(t_list *list, int fd, int num)
 	return (start);
 }
 
-/* this part is to make t_list to t_data */
-
-t_data	*ft_init_data(t_data *data)
+t_list *ft_pre_openfile(char *filename, t_list *list)
 {
-	int		i;
-
-	data = (t_data*)malloc(sizeof(t_data));
-	if (!data)
+	int fd;
+	if ((fd = open(filename, O_RDONLY)) < 0)
 		return (NULL);
-	i = -1;
-	while (++i < 4)
-		data->point[i] = 0;
-	data->next = NULL;
-	return (data);
-}
-
-t_data	*ft_pre_newdata(t_data *data)
-{
-	t_data	*newdata;
-	int		i;
-
-	newdata = (t_data*)malloc(sizeof(t_data));
-	if (!newdata)
+	if ((fd = open(filename, O_DIRECTORY)) >= 0)
 		return (NULL);
-	i = -1;
-	while (++i < 4)
-		newdata->point[i] = 0;
-	newdata->next = NULL;
-	data->next = newdata;
-	data = newdata; /* I have problem here */
-	return (data);
+	if ((list = ft_pre_readfile(list, fd, num)) == NULL)
+		return (NULL);
+	return (list);
 }
 
-int		*ft_list_to_data_point(t_data data, int i, int j)
-{
-	if(data->point[0] > i)
-		data->point[0] = i;
-	if(data->point[1] > j)
-		data->point[1] = j;
-	if(data->point[2] < i)
-		data->point[2] = i;
-	if(data->point[3] < j)
-		data->point[3] = j;
-	return(data);
-}
-
-t_data *ft_list_to_data(t_list list, t_data data)
-{
-	int		i;
-	int		j;
-	int		lline;
-
-	i = -1;
-	j = -1;
-	while (++i < 4)
-	{
-		while (++j < 4)
-		{
-			t_data->tetr[i][j] = t_list->tetr[i][j];
-			if (list->tetr[i][j] == '#')
-				data = ft_list_to_data_point(data, i, j); /*this part is not sure */
-		}
-	}
-} /* next didn't copy here */
+/* I need to check the wrong data here*/
