@@ -13,29 +13,102 @@
 #include "fillit.h"
 #include "global.h"
 
-t_data  ft_cleandate(t_list list)
+int	ft_minmapsize(int num)
 {
-    t_data cdata;
+	if (num == 1)
+		return (2);
+	if (num == 2)
+		return (3);
+	if (num == 4)
+		return (4);
+	if (num == 6)
+		return (5);
+	if (num == 9)
+		return (6);
+	if (num == 12)
+		return (7);
+	if (num <= 16)
+		return (8);
+	if (num <= 20)
+		return (9);
+	if (num <= 25)
+		return (10);
+	return (11); /* how to calculate: int(sqrt(num * 4)), if it more than 25, just let it go  */
+}
+
+char **ft_init_map(int mapsize)
+{
+	char **map;
+	int		i;
+
+	map = (char**)malloc(sizeof(char*) * (mapsize + 1));
+	map[mapsize] = NULL;
+	while(++i < mapsize)
+	{
+		j = -1;
+		map[i] = (char*)malloc(sizeof(char) * (mapsize + 1));
+		while(++j < mapsize)
+			map[i][j] = '.';
+		map[i][mapsize] = NULL;
+	}
+	return (map);
+}
+
+void ft_free_map(char **map; int mapsize)
+{
+	int		i;
+
+	i = -1;
+	while(++i < mapsize + 1)
+		free(map[i]);
+	free(map);
+}
+
+t_data  ft_cleandata(t_data data, char **map)
+{
+	t_data start;
 
 
-    return (cdata);
+	return (start);
 }
 
 int     ft_slover_check(char a_data, char b_map)
 {
-    if(b_map == '.')
-        return (a_data);
-    if(b_map != '.' && a_data != '.')
-        return (0);
-    if(b_map != '.' && a_data == '.')
-        return (b_map);
+	if(b_map == '.')
+		return (a_data);
+	if(b_map != '.' && a_data != '.')
+		return (0); /* then clean data */
+	if(b_map != '.' && a_data == '.')
+		return (b_map);
 }
 
-int     ft_slover_fill(t_data workeddata, char **map, int i, int j)
+char	**ft_checkmap_samemapsize(t_list list, t_data data, int mapsize)
 {
-    char    **temmap;
-    int     n;
+	int		n;
+	int		i;
+	char	**map;
+
+	map = ft_init_map(mapsize);
+	i = -1;
+	while (++i < mapsize * mapsize)
 
 
+	return (map);
+}
 
+char	**ft_give_me_map(t_list list, t_data data)
+{
+	int		mapsize;
+	char	**map;
+	int		i;
+
+	mapsize = ft_minmapsize(num); /* min mapsize, then add it one by one */
+	data = ft_give_me_data(list, data);
+	i = -1;
+ 	while ((map = ft_checkmap_samemapsize(XXXXXXXXXXXX) != NULL)
+	{
+		
+	}
+
+	return (map);
 }

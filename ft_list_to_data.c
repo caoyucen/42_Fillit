@@ -81,7 +81,7 @@ t_data *ft_list_to_data(t_list list, t_data data, char a)
 	}
 }
 
-t_data	*ft_give_me_tdata(t_list list, t_data data)
+t_data	*ft_give_me_data(t_list list, t_data data)
 {
 	int		i;
 	t_data	start;

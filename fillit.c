@@ -30,13 +30,18 @@ void	fillit(int argc, char** argv)
 {
 	t_list	*list;
 	t_data	*data;
+	char		**map;
 
 	list = ft_init_list(list);
 	data = ft_init_data(data);
+	init_global();
 	if (argc == 2)
 	{
 		if ((list = ft_pre_openfile(argv[1], list) != NULL)
 		{
+			/* solve part */
+			/*print part */
+
 
 
 			return;
