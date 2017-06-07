@@ -54,7 +54,7 @@ char **ft_init_map(int mapsize)
 	return (map);
 }
 
-void ft_free_map(char **map; int mapsize)
+void ft_free_map(char **map, int mapsize)
 {
 	int		i;
 
@@ -82,18 +82,32 @@ int     ft_slover_check(char a_data, char b_map)
 		return (b_map);
 }
 
-char	**ft_checkmap_samemapsize(t_list list, t_data data, int mapsize)
+
+char		**ft_map_backtracking(int i, int j, t_data data, char** map, int mapsize)
 {
-	int		n;
-	int		i;
-	char	**map;
-
-	map = ft_init_map(mapsize);
-	i = -1;
-	while (++i < mapsize * mapsize)
-
+	if((i + (data->point[2] - data->point[0]) > mapsize) || (j + (data->point[3] - data->point[1]) > mapsize))
+		return (NULL);
 
 	return (map);
+}
+char	**ft_checkmap_samemapsize(t_list list, t_data data, int mapsize)
+{
+	int		i;
+	int		j;
+	char	**map;
+	int		n;
+
+	map = ft_init_map(mapsize);
+	n = 0;
+	while (++n < num) /*this part is wrong, I have to change it to from left to right */
+	{
+		i = 0;
+		j = 0;
+		while (i < mapsize - ())
+	}
+
+
+	return (0);
 }
 
 char	**ft_give_me_map(t_list list, t_data data)
@@ -105,10 +119,10 @@ char	**ft_give_me_map(t_list list, t_data data)
 	mapsize = ft_minmapsize(num); /* min mapsize, then add it one by one */
 	data = ft_give_me_data(list, data);
 	i = -1;
- 	while ((map = ft_checkmap_samemapsize(XXXXXXXXXXXX) != NULL)
+ 	while ((map = ft_checkmap_samemapsize(list, data, mapsize) == NULL)
 	{
-		
+		ft_free_map(map, mapsize);
+		mapsize++;
 	}
-
 	return (map);
 }

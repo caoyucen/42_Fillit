@@ -27,6 +27,7 @@ t_data	*ft_init_data(t_data *data)
 	data->point[0] = 0;
 	data->point[0] = 0;
 	data->next = NULL;
+	data->before = NULL;
 	return (data);
 }
 
@@ -43,6 +44,7 @@ t_data	*ft_pre_newdata(t_data *data)
 	data->point[0] = 0;
 	newdata->next = NULL;
 	data->next = newdata;
+	newdata->before = data;
 	data = newdata; /* I have problem here */
 	return (data);
 }
