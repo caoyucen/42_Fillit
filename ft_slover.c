@@ -64,14 +64,6 @@ void ft_free_map(char **map, int mapsize)
 	free(map);
 }
 
-t_data  ft_cleandata(t_data data, char **map)
-{
-	t_data start;
-
-
-	return (start);
-}
-
 int     ft_slover_check(char a_data, char b_map)
 {
 	if(b_map == '.')
@@ -82,6 +74,18 @@ int     ft_slover_check(char a_data, char b_map)
 		return (b_map);
 }
 
+t_data  ft_cleandata(char **map, int n)
+{
+	int i;
+	int j;
+
+	i = -1;
+	j = -1;
+	while (++i )
+
+
+	return (start);
+}
 
 char		**ft_map_backtracking(int i, int j, t_data data, char** map, int mapsize)
 {
@@ -90,6 +94,7 @@ char		**ft_map_backtracking(int i, int j, t_data data, char** map, int mapsize)
 
 	return (map);
 }
+
 char	**ft_checkmap_samemapsize(t_list list, t_data data, int mapsize)
 {
 	int		i;
