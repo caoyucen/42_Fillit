@@ -31,11 +31,13 @@ typedef struct  s_list
 }               t_list;
 
 /* ft_pre_list.c */
-t_list	ft_init_list(t_list *list);
+t_list	*ft_init_list(t_list *list);
 
 t_list	*ft_pre_newlist(t_list *list);
 
-char	**ft_pre_buf(char* buf, t_list *list, int ret);
+t_list	*ft_pre_buf(char* buf, t_list *list, int ret);
+
+char	*ft_strnew(size_t size);
 
 t_list	*ft_pre_readfile(t_list *list, int fd);
 
@@ -46,11 +48,11 @@ t_data	*ft_init_data(t_data *data);
 
 t_data	*ft_pre_newdata(t_data *data);
 
-int		*ft_list_to_data_point(t_data data, int i, int j);
+int		*ft_list_to_data_point(t_data *data, int i, int j);
 
-t_data *ft_list_to_data(t_list list, t_data data, char a);
+t_data *ft_list_to_data(t_list *list, t_data *data, char a);
 
-t_data	*ft_give_me_data(t_list list, t_data data);
+t_data	*ft_give_me_data(t_list *list, t_data *data);
 
 /*ft_slover.c*/
 int	ft_minmapsize(int num);

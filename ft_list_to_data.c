@@ -49,7 +49,7 @@ t_data	*ft_pre_newdata(t_data *data)
 	return (data);
 }
 
-int		*ft_list_to_data_point(t_data data, int i, int j)
+int		*ft_list_to_data_point(t_data *data, int i, int j)
 {
 	if(data->point[0] > i)
 		data->point[0] = i;
@@ -62,7 +62,7 @@ int		*ft_list_to_data_point(t_data data, int i, int j)
 	return(data);
 }
 
-t_data *ft_list_to_data(t_list list, t_data data, char a)
+t_data *ft_list_to_data(t_list *list, t_data *data, char a)
 {
 	int		i;
 	int		j;
@@ -83,10 +83,10 @@ t_data *ft_list_to_data(t_list list, t_data data, char a)
 	}
 }
 
-t_data	*ft_give_me_data(t_list list, t_data data)
+t_data	*ft_give_me_data(t_list *list, t_data *data)
 {
 	int		i;
-	t_data	start;
+	t_data	*start;
 
 	i = 0;
 	while (i < num)
@@ -95,7 +95,7 @@ t_data	*ft_give_me_data(t_list list, t_data data)
 		data->n = i;
 		i++;
 		if (i < num)
-			data = ft_pre_newdata(t_data *data);
+			data = ft_pre_newdata(data);
 	}
 	return (start);
 }

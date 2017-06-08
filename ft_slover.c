@@ -40,6 +40,7 @@ char **ft_init_map(int mapsize)
 {
 	char **map;
 	int		i;
+	int		j;
 
 	map = (char**)malloc(sizeof(char*) * (mapsize + 1));
 	map[mapsize] = NULL;
@@ -49,7 +50,7 @@ char **ft_init_map(int mapsize)
 		map[i] = (char*)malloc(sizeof(char) * (mapsize + 1));
 		while(++j < mapsize)
 			map[i][j] = '.';
-		map[i][mapsize] = NULL;
+		map[i][mapsize] = '\0';
 	}
 	return (map);
 }
@@ -74,7 +75,7 @@ char     ft_point_check(char a_data, char b_map)
 		return (b_map);
 }
 
-char		**ft_map_clean(char **map, int n)/*clean in every layer */
+char		**ft_map_clean(char **map, int n, int mapsize)/*clean in every layer */
 {
 	int i;
 	int j;
@@ -93,14 +94,14 @@ char		**ft_map_clean(char **map, int n)/*clean in every layer */
 	return (map);
 }
 
-char	**ft_putmap_check(t_data data, char **map, int i, int j)
+char	**ft_putmap_check(t_data *data, char **map, int i, int j, mapsize)
 {
 	int a;
 	int b;
 	char temp;
 
 	a = -1;
-	while (++a <= (data->point[2] - data->point[0])
+	while (++a <= (data->point[2] - data->point[0]))
 	{
 		b = -1;
 		while (++b <= (data->point[3] - data->point[1]))
@@ -110,7 +111,7 @@ char	**ft_putmap_check(t_data data, char **map, int i, int j)
 				map[a + i][b + j] = temp;
 			if (!temp)
 			{
-				ft_map_clean(char **map, data->n);
+				ft_map_clean(char **map, data->n, mapsize);
 				return (NULL);
 			}
 		}
@@ -118,7 +119,7 @@ char	**ft_putmap_check(t_data data, char **map, int i, int j)
 	return (map);
 }
 
-char		**ft_try_map(t_data data, char** map, int mapsize)
+char		**ft_try_map(t_data *data, char** map, int mapsize)
 {
 	int i;
 	int j;
@@ -129,10 +130,11 @@ char		**ft_try_map(t_data data, char** map, int mapsize)
 	{
 		while (++j < mapsize)
 		{
-			if(((i + (data->point[2] - data->point[0])) > mapsize) || ((j + (data->point[3] - data->point[1])) > mapsize)))
+			if(((i + (data->point[2] - data->point[0])) > mapsize) || ((j + (data->point[3] - data->point[1])) > mapsize))
 				continue;/* I have question here, have to ask zhuzhu ^-^ */
-			if (map = ft_putmap_check(data, map, i, j))
+			if (ft_putmap_check(data, map, i, j, mapsize))
 				{
+					map = ft_putmap_check(data, map, i, j, mapsize);
 					if (!data->next)
 						return(map);
 					if (ft_try_map(data->next, map, mapsize)

@@ -13,7 +13,7 @@
 #include "fillit.h"
 #include "global.h"
 
-t_list	ft_init_list(t_list *list)
+t_list	*ft_init_list(t_list *list)
 {
 	list = (t_list*)malloc(sizeof(t_list));
 	if (!list)
@@ -35,18 +35,18 @@ t_list	*ft_pre_newlist(t_list *list)
 	return (list);
 }
 
-char	**ft_pre_buf(char* buf, t_list *list, int ret)
+t_list	*ft_pre_buf(char *buf, t_list *list, int ret)
 {
 	int		i;
 	int		j;
 	int		z;
 	int		n;
 
-	if (list == NUll)
+	if (list == NULL)
 		return (NULL);
 	if ((buf[4] != '/n') || (buf[9] != '/n') || (buf[14] != '/n') || (buf[20] != '/n'))
-		return (NULL);
-	if (ret == 21 && buf[21] != '/n')
+		return (NULL);/*this part is wrong */
+	if ((ret == 21) && (buf[21] != '/n'))
 		return (NULL);
 	i = -1;
 	z = 0;
@@ -68,6 +68,23 @@ char	**ft_pre_buf(char* buf, t_list *list, int ret)
 			return (NULL);
 	}
 	return (list);
+}
+
+char	*ft_strnew(size_t size)
+{
+	char	*str;
+	size_t	i;
+
+	str = (char*)malloc(sizeof(char) * (size + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (i <= size)
+	{
+		str[i] = '\0';
+		i++;
+	}
+	return (str);
 }
 
 t_list	*ft_pre_readfile(t_list *list, int fd)
