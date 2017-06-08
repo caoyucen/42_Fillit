@@ -19,6 +19,7 @@ typedef struct  s_data
 {
     char            tetr[4][4];
     int             point[4]; /* min i, min j, max i, max j */
+		int							n; /* NO.n data in all */
     struct  s_data  *next;
 		struct  s_data  *before;
 }               t_data;

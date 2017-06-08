@@ -64,7 +64,7 @@ void ft_free_map(char **map, int mapsize)
 	free(map);
 }
 
-int     ft_slover_check(char a_data, char b_map)
+int     ft_point_check(char a_data, char b_map)
 {
 	if(b_map == '.')
 		return (a_data);
@@ -74,57 +74,77 @@ int     ft_slover_check(char a_data, char b_map)
 		return (b_map);
 }
 
-t_data  ft_cleandata(char **map, int n)
+char	**ft_tetr_check(char **map??????)
+{
+	return (map);
+}
+
+
+char		**ft_map_clean(char **map, int n)/*clean in every layer */
+{
+	int i;
+	int j;
+	char **stackmap;
+
+	i = -1;
+	j = -1;
+	while (++i < mapsize)
+	{
+		while (++j < mapsize)
+		{
+			if (map[i][j] == letter[n])
+				map[i][j] = '.';
+		}
+	}
+	return (map);
+}
+
+char		**ft_try_map(t_data data, char** map, int mapsize)
 {
 	int i;
 	int j;
 
 	i = -1;
 	j = -1;
-	while (++i )
-
-
-	return (start);
+	while (++i < mapsize)
+	{
+		while (++j < mapsize)
+		{
+			if(((i + (data->point[2] - data->point[0])) > mapsize) || ((j + (data->point[3] - data->point[1])) > mapsize)))
+				continue;/* I have question here, have to ask zhuzhu */
+			if (MAP = ft_tetr_check(???))
+				{
+					if (!data->next)
+						return(map);
+					/*I have problem here */
+					if (ft_try_map(data->next) is good)
+						return(map);/*I have problem here*/
+				}
+		}
+	}
+	ft_map_clean(char **map, data->n);??????  where is n???
+	return (NULL);
 }
 
-char		**ft_map_backtracking(int i, int j, t_data data, char** map, int mapsize)
+char	**ft_checkmap_samemapsize(t_data data, int mapsize)
 {
-	if((i + (data->point[2] - data->point[0]) > mapsize) || (j + (data->point[3] - data->point[1]) > mapsize))
-		return (NULL);
-
-	return (map);
-}
-
-char	**ft_checkmap_samemapsize(t_list list, t_data data, int mapsize)
-{
-	int		i;
-	int		j;
 	char	**map;
-	int		n;
 
 	map = ft_init_map(mapsize);
-	n = 0;
-	while (++n < num) /*this part is wrong, I have to change it to from left to right */
-	{
-		i = 0;
-		j = 0;
-		while (i < mapsize - ())
-	}
-
-
-	return (0);
+	if (ft_try_map(data, map, mapsize))
+		return (map);
+	else
+		return (NULL);
 }
 
 char	**ft_give_me_map(t_list list, t_data data)
 {
 	int		mapsize;
 	char	**map;
-	int		i;
 
 	mapsize = ft_minmapsize(num); /* min mapsize, then add it one by one */
 	data = ft_give_me_data(list, data);
-	i = -1;
- 	while ((map = ft_checkmap_samemapsize(list, data, mapsize) == NULL)
+ 	while ((map = ft_checkmap_samemapsize(list, data, mapsize)) == NULL)
 	{
 		ft_free_map(map, mapsize);
 		mapsize++;

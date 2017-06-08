@@ -92,6 +92,7 @@ t_data	*ft_give_me_data(t_list list, t_data data)
 	while (i < num)
 	{
 		data = ft_list_to_data(list, data, letter[i]);
+		data->n = i;
 		i++;
 		if (i < num)
 			data = ft_pre_newdata(t_data *data);
