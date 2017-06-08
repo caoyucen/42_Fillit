@@ -64,7 +64,7 @@ void ft_free_map(char **map, int mapsize)
 	free(map);
 }
 
-int     ft_point_check(char a_data, char b_map)
+char     ft_point_check(char a_data, char b_map)
 {
 	if(b_map == '.')
 		return (a_data);
@@ -73,12 +73,6 @@ int     ft_point_check(char a_data, char b_map)
 	if(b_map != '.' && a_data == '.')
 		return (b_map);
 }
-
-char	**ft_tetr_check(char **map??????)
-{
-	return (map);
-}
-
 
 char		**ft_map_clean(char **map, int n)/*clean in every layer */
 {
@@ -99,6 +93,31 @@ char		**ft_map_clean(char **map, int n)/*clean in every layer */
 	return (map);
 }
 
+char	**ft_putmap_check(t_data data, char **map, int i, int j)
+{
+	int a;
+	int b;
+	char temp;
+
+	a = -1;
+	while (++a <= (data->point[2] - data->point[0])
+	{
+		b = -1;
+		while (++b <= (data->point[3] - data->point[1]))
+		{
+			temp = ft_point_check(data->tetr[point[0] + a][point[1] + b], map[i + a][j + b]); /* can put it or not */
+			if (temp)
+				map[a + i][b + j] = temp;
+			if (!temp)
+			{
+				ft_map_clean(char **map, data->n);
+				return (NULL);
+			}
+		}
+	}
+	return (map);
+}
+
 char		**ft_try_map(t_data data, char** map, int mapsize)
 {
 	int i;
@@ -111,18 +130,17 @@ char		**ft_try_map(t_data data, char** map, int mapsize)
 		while (++j < mapsize)
 		{
 			if(((i + (data->point[2] - data->point[0])) > mapsize) || ((j + (data->point[3] - data->point[1])) > mapsize)))
-				continue;/* I have question here, have to ask zhuzhu */
-			if (MAP = ft_tetr_check(???))
+				continue;/* I have question here, have to ask zhuzhu ^-^ */
+			if (map = ft_putmap_check(data, map, i, j))
 				{
 					if (!data->next)
 						return(map);
-					/*I have problem here */
-					if (ft_try_map(data->next) is good)
-						return(map);/*I have problem here*/
+					if (ft_try_map(data->next, map, mapsize)
+						return(map);
 				}
 		}
 	}
-	ft_map_clean(char **map, data->n);??????  where is n???
+	ft_map_clean(char **map, data->n);
 	return (NULL);
 }
 

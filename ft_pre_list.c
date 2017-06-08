@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pre.c                                           :+:      :+:    :+:   */
+/*   ft_pre_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -87,18 +87,18 @@ t_list	*ft_pre_readfile(t_list *list, int fd)
 			list = ft_pre_newlist(list);
 		if ((list = ft_pre_buf(buf, list, ret)) == NULL)
 			return (NULL);
-		num++; /* global variables for the num of tetriminos*/
+		num++;/* global variables for the num of tetriminos*/
 	}
 	if (lastret != 20 || ret != 0)
 		return (NULL);
 	return (start);
 }
 
-t_list *ft_pre_openfile(char *filename, t_list *list)
+t_list	*ft_pre_openfile(char *filename, t_list *list)
 {
 	int fd;
 	if ((fd = open(filename, O_RDONLY)) < 0)
-		return (NULL);
+		return (NULL);/*do I need to cout what is the error??? */
 	if ((fd = open(filename, O_DIRECTORY)) >= 0)
 		return (NULL);
 	if ((list = ft_pre_readfile(list, fd, num)) == NULL)

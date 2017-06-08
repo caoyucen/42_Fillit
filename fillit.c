@@ -26,6 +26,49 @@ void init_global()
 	}
 }
 
+void	ft_putchar(char c)
+{
+	unsigned char a;
+
+	a = (unsigned char)c;
+	write(1, &a, 1);
+}
+
+void	ft_putstr(char const *str)
+{
+	int i;
+
+	if (!str)
+		return ;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+	return ;
+}
+
+void ft_printmap(char **map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			ft_putchar(map[i][j]);
+			j++;
+		}
+		ft_putchar('\n');
+		i++;
+	}
+}
+
+
 void	fillit(int argc, char** argv)
 {
 	t_list	*list;
@@ -39,13 +82,11 @@ void	fillit(int argc, char** argv)
 	{
 		if ((list = ft_pre_openfile(argv[1], list) != NULL)
 		{
-			/* solve part */
-			/*print part */
-
-
-
+			map = ft_give_me_map(list, data);
+			ft_printmap(map);
 			return;
 		}
 	}
 	ft_putstr("error/n");
+	return;
 }
