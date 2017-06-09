@@ -44,9 +44,9 @@ t_list	*ft_pre_buf(char *buf, t_list *list, int ret)
 
 	if (list == NULL)
 		return (NULL);
-	if ((buf[4] != '/n') || (buf[9] != '/n') || (buf[14] != '/n') || (buf[20] != '/n'))
+	if ((buf[4] != '\n') || (buf[9] != '\n') || (buf[14] != '\n') || (buf[20] != '\n'))
 		return (NULL);    /*this part is wrong */
-	if ((ret == 21) && (buf[21] != '/n'))
+	if ((ret == 21) && (buf[21] != '\n'))
 		return (NULL);
 	i = -1;
 	z = 0;
