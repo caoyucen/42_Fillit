@@ -66,13 +66,13 @@ char     ft_point_check(char a_data, char b_map);
 
 char		**ft_map_clean(char **map, int n, int mapsize);
 
-char	**ft_putmap_check(t_data data, char **map, int i, int j);
+char	**ft_putmap_check(t_data *data, char **map, int i, int j, int mapsize);
 
-char		**ft_try_map(t_data data, char** map, int mapsize);
+char		**ft_try_map(t_data *data, char** map, int mapsize);
 
-char	**ft_checkmap_samemapsize(t_data data, int mapsize);
+char	**ft_checkmap_samemapsize(t_data *data, int mapsize);
 
-char	**ft_give_me_map(t_list list, t_data data);
+char	**ft_give_me_map(t_list *list, t_data *data);
 
 /*fillit.c*/
 void init_global();

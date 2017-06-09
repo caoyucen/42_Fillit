@@ -81,7 +81,6 @@ char		**ft_map_clean(char **map, int n, int mapsize)/*clean in every layer */
 {
 	int i;
 	int j;
-	char **stackmap;
 
 	i = -1;
 	j = -1;
@@ -96,7 +95,7 @@ char		**ft_map_clean(char **map, int n, int mapsize)/*clean in every layer */
 	return (map);
 }
 
-char	**ft_putmap_check(t_data *data, char **map, int i, int j, mapsize)
+char	**ft_putmap_check(t_data *data, char **map, int i, int j, int mapsize)
 {
 	int a;
 	int b;
@@ -108,12 +107,12 @@ char	**ft_putmap_check(t_data *data, char **map, int i, int j, mapsize)
 		b = -1;
 		while (++b <= (data->point[3] - data->point[1]))
 		{
-			temp = ft_point_check(data->tetr[point[0] + a][point[1] + b], map[i + a][j + b]); /* can put it or not */
+			temp = ft_point_check(data->tetr[data->point[0] + a][data->point[1] + b], map[i + a][j + b]); /* can put it or not */
 			if (temp)
 				map[a + i][b + j] = temp;
 			if (!temp)
 			{
-				ft_map_clean(char **map, data->n, mapsize);
+				ft_map_clean(map, data->n, mapsize);
 				return (NULL);
 			}
 		}
@@ -138,17 +137,17 @@ char		**ft_try_map(t_data *data, char** map, int mapsize)
 				{
 					map = ft_putmap_check(data, map, i, j, mapsize);
 					if (!data->next)
-						return(map);
-					if (ft_try_map(data->next, map, mapsize)
-						return(map);
+						return (map);
+					if (ft_try_map(data->next, map, mapsize)) /*data->next ?? what is it? */
+						return (map);
 				}
 		}
 	}
-	ft_map_clean(char **map, data->n);
+	ft_map_clean(map, data->n, mapsize);
 	return (NULL);
 }
 
-char	**ft_checkmap_samemapsize(t_data data, int mapsize)
+char	**ft_checkmap_samemapsize(t_data *data, int mapsize)
 {
 	char	**map;
 
@@ -159,14 +158,14 @@ char	**ft_checkmap_samemapsize(t_data data, int mapsize)
 		return (NULL);
 }
 
-char	**ft_give_me_map(t_list list, t_data data)
+char	**ft_give_me_map(t_list *list, t_data *data)
 {
 	int		mapsize;
 	char	**map;
 
 	mapsize = ft_minmapsize(num); /* min mapsize, then add it one by one */
 	data = ft_give_me_data(list, data);
- 	while ((map = ft_checkmap_samemapsize(list, data, mapsize)) == NULL)
+ 	while ((map = ft_checkmap_samemapsize(data, mapsize)) == NULL)
 	{
 		ft_free_map(map, mapsize);
 		mapsize++;

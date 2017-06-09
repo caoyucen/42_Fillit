@@ -55,6 +55,7 @@ t_list	*ft_pre_buf(char *buf, t_list *list, int ret)
 		j = -1;
 		while (++j < 4)
 		{
+			n = 0;
 			if ((z = 4) || (z = 9) || (z = 14))
 				z++;
 			if (buf[z] != '#' && buf[z] != '.' )
@@ -65,7 +66,7 @@ t_list	*ft_pre_buf(char *buf, t_list *list, int ret)
 			z++;
 		}
 		if (n > 4)
-			return (NULL);
+			return (NULL); /*I need something mor here */
 	}
 	return (list);
 }

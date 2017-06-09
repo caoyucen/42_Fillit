@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = fillit
 
 SRC = ft_*.c
 
@@ -20,7 +20,7 @@ HEADER = *.h
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Wextra -Werror -c $(SRC) -I $(HEADER) 
+	gcc -Wall -Wextra -Werror -c $(SRC) -I $(HEADER)
 	ar rc $(NAME) *.o
 	ranlib $(NAME)
 
