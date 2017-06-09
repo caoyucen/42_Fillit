@@ -12,8 +12,9 @@
 
 #ifndef FILLIT_H
 # define FILLIT_H
-#include <unistd.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
 
 typedef struct  s_data
 {
@@ -48,7 +49,7 @@ t_data	*ft_init_data(t_data *data);
 
 t_data	*ft_pre_newdata(t_data *data);
 
-int		*ft_list_to_data_point(t_data *data, int i, int j);
+t_data		*ft_list_to_data_point(t_data *data, int i, int j);
 
 t_data *ft_list_to_data(t_list *list, t_data *data, char a);
 
@@ -63,7 +64,7 @@ void ft_free_map(char **map, int mapsize);
 
 char     ft_point_check(char a_data, char b_map);
 
-char		**ft_map_clean(char **map, int n);
+char		**ft_map_clean(char **map, int n, int mapsize);
 
 char	**ft_putmap_check(t_data data, char **map, int i, int j);
 

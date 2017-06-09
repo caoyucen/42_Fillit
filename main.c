@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include "global.h"
+# include "fillit.h"
+# include "global.h"
 
 int		main(int argc, char** argv)
 {

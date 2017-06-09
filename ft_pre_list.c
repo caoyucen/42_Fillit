@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include "global.h"
+# include "fillit.h"
+# include "global.h"
 
 t_list	*ft_init_list(t_list *list)
 {
 	list = (t_list*)malloc(sizeof(t_list));
 	if (!list)
-		return (NULL)
+		return (NULL);
 	list->next = NULL;
 	return (list);
 }
@@ -45,7 +45,7 @@ t_list	*ft_pre_buf(char *buf, t_list *list, int ret)
 	if (list == NULL)
 		return (NULL);
 	if ((buf[4] != '/n') || (buf[9] != '/n') || (buf[14] != '/n') || (buf[20] != '/n'))
-		return (NULL);/*this part is wrong */
+		return (NULL);    /*this part is wrong */
 	if ((ret == 21) && (buf[21] != '/n'))
 		return (NULL);
 	i = -1;
@@ -118,7 +118,7 @@ t_list	*ft_pre_openfile(char *filename, t_list *list)
 		return (NULL);/*do I need to cout what is the error??? */
 	if ((fd = open(filename, O_DIRECTORY)) >= 0)
 		return (NULL);
-	if ((list = ft_pre_readfile(list, fd, num)) == NULL)
+	if ((list = ft_pre_readfile(list, fd)) == NULL)
 		return (NULL);
 	return (list);
 }

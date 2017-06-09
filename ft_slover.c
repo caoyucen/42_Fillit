@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include "global.h"
+# include "fillit.h"
+# include "global.h"
 
 int	ft_minmapsize(int num)
 {
@@ -42,6 +42,7 @@ char **ft_init_map(int mapsize)
 	int		i;
 	int		j;
 
+	i = -1;
 	map = (char**)malloc(sizeof(char*) * (mapsize + 1));
 	map[mapsize] = NULL;
 	while(++i < mapsize)
@@ -67,12 +68,13 @@ void ft_free_map(char **map, int mapsize)
 
 char     ft_point_check(char a_data, char b_map)
 {
-	if(b_map == '.')
-		return (a_data);
+
 	if(b_map != '.' && a_data != '.')
 		return (0); /* then clean data */
 	if(b_map != '.' && a_data == '.')
 		return (b_map);
+/* else --->  if(b_map == '.') */
+	return (a_data);
 }
 
 char		**ft_map_clean(char **map, int n, int mapsize)/*clean in every layer */
