@@ -18,7 +18,7 @@
 
 typedef struct  s_data
 {
-    char            tetr[4][4];
+    char            tetr[4][5];
     int             point[4]; /* min i, min j, max i, max j */
     int             n; /* NO.n data in all */
     struct  s_data  *next;
@@ -27,7 +27,7 @@ typedef struct  s_data
 
 typedef struct  s_list
 {
-    char            tetr[4][4];
+    char            tetr[4][5];
     struct  s_list  *next;
 }               t_list;
 
@@ -83,6 +83,6 @@ void	ft_putstr(char const *str);
 
 void ft_printmap(char **map);
 
-void	fillit(int argc, char** argv);
+void	ft_fillit(int argc, char** argv);
 
 #endif

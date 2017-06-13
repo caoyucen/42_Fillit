@@ -69,24 +69,27 @@ void ft_printmap(char **map)
 }
 
 
-void	fillit(int argc, char** argv)
+void	ft_fillit(int argc, char** argv)
 {
 	t_list	*list;
 	t_data	*data;
 	char		**map;
 
+	list = NULL;
+	data = NULL;
 	list = ft_init_list(list);
 	data = ft_init_data(data);
 	init_global();
 	if (argc == 2)
 	{
-		if ((list = ft_pre_openfile(argv[1], list) != NULL)
+
+		if ((list = ft_pre_openfile(argv[1], list)) != NULL)
 		{
 			map = ft_give_me_map(list, data);
 			ft_printmap(map);
 			return;
 		}
 	}
-	ft_putstr("error/n");
+	ft_putstr("error\n");
 	return;
 }

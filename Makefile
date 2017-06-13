@@ -12,7 +12,7 @@
 
 NAME = fillit
 
-SRC = ft_*.c
+SRC = *.c
 
 HEADER = *.h
 
@@ -21,11 +21,11 @@ all: $(NAME)
 
 $(NAME):
 	gcc -Wall -Wextra -Werror -c $(SRC) -I $(HEADER)
-	ar rc $(NAME) *.o
-	ranlib $(NAME)
+	gcc -Wall -Wextra -Werror *.o -o $(NAME) main.c
+
 
 clean:
-	/bin/rm -f *.o
+	/bin/rm -f *.o *.gch
 
 fclean: clean
 	/bin/rm -f $(NAME)

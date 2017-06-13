@@ -43,8 +43,7 @@ char **ft_init_map(int mapsize)
 	int		j;
 
 	i = -1;
-	map = (char**)malloc(sizeof(char*) * (mapsize + 1));
-	map[mapsize] = NULL;
+	map = (char**)malloc(sizeof(char*) * mapsize);
 	while(++i < mapsize)
 	{
 		j = -1;
@@ -61,8 +60,12 @@ void ft_free_map(char **map, int mapsize)
 	int		i;
 
 	i = -1;
-	while(++i < mapsize + 1)
+
+	while(++i < mapsize)
 		free(map[i]);
+		/*mark */
+	ft_putstr(" something is wrong here, free map here we go\n");
+		/*mark */
 	free(map);
 }
 
@@ -165,10 +168,24 @@ char	**ft_give_me_map(t_list *list, t_data *data)
 
 	mapsize = ft_minmapsize(num); /* min mapsize, then add it one by one */
 	data = ft_give_me_data(list, data);
+
  	while ((map = ft_checkmap_samemapsize(data, mapsize)) == NULL)
 	{
+		/*mark */
+		// ft_putstr("map3here we go\n");
+		/*mark */
+
 		ft_free_map(map, mapsize);
+
+		/*mark */
+		ft_putstr("map4here we go\n");
+		/*mark */
+
 		mapsize++;
+		/*mark */
+		char c = 48 + mapsize;
+		ft_putchar(c);
+		/*mark */
 	}
 	return (map);
 }

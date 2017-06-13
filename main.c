@@ -15,6 +15,6 @@
 
 int		main(int argc, char** argv)
 {
-	fillit(argc, argv);
+	ft_fillit(argc, argv);
 	return (0);
 }
