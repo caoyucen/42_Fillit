@@ -43,7 +43,8 @@ char **ft_init_map(int mapsize)
 	int		j;
 
 	i = -1;
-	map = (char**)malloc(sizeof(char*) * mapsize);
+	map = (char**)malloc(sizeof(char*) * mapsize + 1);
+	map[mapsize] = NULL;
 	while(++i < mapsize)
 	{
 		j = -1;
@@ -76,12 +77,13 @@ char     ft_point_check(char a_data, char b_map)
 		return (0); /* then clean data */
 	if(b_map != '.' && a_data == '.')
 		return (b_map);
-/* else --->  if(b_map == '.') */
+	else
 	return (a_data);
 }
 
 char		**ft_map_clean(char **map, int n, int mapsize)/*clean in every layer */
 {
+	/*when can not put data in the map, clean it */
 	int i;
 	int j;
 
@@ -100,65 +102,107 @@ char		**ft_map_clean(char **map, int n, int mapsize)/*clean in every layer */
 
 char	**ft_putmap_check(t_data *data, char **map, int i, int j, int mapsize)
 {
+	/*put data in the map, from point [i, j] */
 	int a;
 	int b;
 	char temp;
 
+	int n = 0;
 	a = -1;
 	while (++a <= (data->point[2] - data->point[0]))
 	{
 		b = -1;
+		/*mark */
+		// char s = 48 + a;
+		// ft_putchar(s);
+		  //ft_putstr("next\n");
+		/*mark */
 		while (++b <= (data->point[3] - data->point[1]))
 		{
+			/*mark */
+			char s = 48 + n;
+			ft_putchar(s);
+			 ft_putstr(" mark\n");
+			 n++;
+			/*mark */
 			temp = ft_point_check(data->tetr[data->point[0] + a][data->point[1] + b], map[i + a][j + b]); /* can put it or not */
+
 			if (temp)
 				map[a + i][b + j] = temp;
 			if (!temp)
 			{
+				/*mark */
+				  ft_putchar('W');
+					ft_putchar('\n');
+				/*mark */
 				ft_map_clean(map, data->n, mapsize);
-				return (NULL);
+				/*mark */
+				  ft_putchar('Q');
+					ft_putchar('\n');
+					return (NULL);
 			}
 		}
 	}
+	//ft_printmap(map);
 	return (map);
 }
 
 char		**ft_try_map(t_data *data, char** map, int mapsize)
 {
+	/* in this mapsize, try to find if all the data can be put in it */
 	int i;
 	int j;
 
 	i = -1;
-	j = -1;
 	while (++i < mapsize)
 	{
+		j = -1;
 		while (++j < mapsize)
 		{
+			/*mark */
+			 //ft_putstr("1 mark here we go\n");
+			/*mark */
 			if(((i + (data->point[2] - data->point[0])) > mapsize) || ((j + (data->point[3] - data->point[1])) > mapsize))
+			{
 				continue;/* I have question here, have to ask zhuzhu ^-^ */
-			if (ft_putmap_check(data, map, i, j, mapsize))
+			}
+			/*mark */
+			// char d = 48 + j;
+			//  ft_putchar(d);
+			/*mark */
+			if ((ft_putmap_check(data, map, i, j, mapsize)) == NULL)
+			{
+				if (!data->next)
 				{
-					map = ft_putmap_check(data, map, i, j, mapsize);
-					if (!data->next)
-						return (map);
-					if (ft_try_map(data->next, map, mapsize)) /*data->next ?? what is it? */
-						return (map);
+					ft_putstr("!data return NULL here\n");
+					return (NULL);
 				}
+				else
+					continue;
+			}
+
+			ft_printmap(map);
+
+			/*mark */
+			ft_putstr("putmap check here we go\n");
+			/*mark */
+			if (!data->next)
+				return (map);
+			if (ft_try_map(data->next, map, mapsize)) /*data->next ?? what is it? */
+			{
+						/*mark */
+						 //ft_putstr("mark continue here we go\n");
+						/*mark */
+						return (map);
+			}
+			if (!ft_try_map(data->next, map, mapsize) && !data->next)
+			{
+				return (NULL);
+			}
 		}
 	}
 	ft_map_clean(map, data->n, mapsize);
 	return (NULL);
-}
-
-char	**ft_checkmap_samemapsize(t_data *data, int mapsize)
-{
-	char	**map;
-
-	map = ft_init_map(mapsize);
-	if (ft_try_map(data, map, mapsize))
-		return (map);
-	else
-		return (NULL);
 }
 
 char	**ft_give_me_map(t_list *list, t_data *data)
@@ -168,24 +212,59 @@ char	**ft_give_me_map(t_list *list, t_data *data)
 
 	mapsize = ft_minmapsize(num); /* min mapsize, then add it one by one */
 	data = ft_give_me_data(list, data);
+	map = ft_init_map(mapsize);
 
- 	while ((map = ft_checkmap_samemapsize(data, mapsize)) == NULL)
+ 	while ((ft_try_map(data, map, mapsize)) == NULL)
 	{
 		/*mark */
-		// ft_putstr("map3here we go\n");
-		/*mark */
-
-		ft_free_map(map, mapsize);
-
-		/*mark */
-		ft_putstr("map4here we go\n");
-		/*mark */
-
-		mapsize++;
-		/*mark */
 		char c = 48 + mapsize;
+		ft_putstr("this is important important important,mapsize is : ");
 		ft_putchar(c);
 		/*mark */
+		ft_free_map(map, mapsize);
+		mapsize++;
+		map = ft_init_map(mapsize);
+
 	}
 	return (map);
 }
+
+
+// char	**ft_checkmap_samemapsize(t_data *data, int mapsize)
+// {
+// 	char	**map;
+//
+// 	/*mark */
+// 	char s = 48 + mapsize;
+// 	ft_putstr("mapsize = ");
+// 	ft_putchar(s);
+// 	ft_putchar('\n');
+//
+// 	map = ft_init_map(mapsize);
+// 	if (ft_try_map(data, map, mapsize) == NULL)
+// 	{
+// 		return (NULL);
+// 	}
+//
+// 	return (map);
+// }
+
+// char	**ft_give_me_map(t_list *list, t_data *data)
+// {
+// 	int		mapsize;
+// 	char	**map;
+//
+// 	mapsize = ft_minmapsize(num); /* min mapsize, then add it one by one */
+// 	data = ft_give_me_data(list, data);
+//
+//  	while ((map = ft_checkmap_samemapsize(data, mapsize)) == NULL)
+// 	{
+// 		ft_free_map(map, mapsize);
+// 		mapsize++;
+// 		/*mark */
+// 		char c = 48 + mapsize;
+// 		ft_putchar(c);
+// 		/*mark */
+// 	}
+// 	return (map);
+// }
