@@ -71,30 +71,32 @@ t_list	*ft_pre_buf(char *buf, t_list *list, int ret)
 		return (NULL);
 	i = -1;
 	z = 0;
+	n = 0;
 	while (++i < 4)
 	{
 		j = -1;
 		while (++j < 4)
 		{
-			n = 0;
 			if ((z == 4) || (z == 9) || (z == 14))
 				z++;
 			if (buf[z] != '#' && buf[z] != '.' )
 				return (NULL);
 			list->tetr[i][j] = buf[z];
-			if (buf[z] == '#')
+			if (list->tetr[i][j] == '#')
 			{
 				n++; /* check if there is only 4 # in a tetr */
+
 			}
 			z++;
 		}
 		 /*I need something mor here */
 	}
-	// if (n != 4)
-	// {
-	// 	ft_putnbr(n);
-	// 	return (NULL);
-	// }
+	if (n != 4)
+	{
+		ft_putnbr(n);
+		ft_putchar('\n');
+		return (NULL);
+	}
 	return (list);
 }
 
