@@ -68,9 +68,9 @@ char		**ft_map_clean(char **map, int n, int mapsize);
 
 char	**ft_putmap_check(t_data *data, char **map, int i, int j, int mapsize);
 
-char		**ft_try_map(t_data *data, char** map, int mapsize);
+char		**ft_try_map(t_data *data, char** map, int mapsize, int i, int j);
 
-char	**ft_checkmap_samemapsize(t_data *data, int mapsize);
+char	**ft_checkmap_samemapsize(t_data *data, int mapsize, char **map);
 
 char	**ft_give_me_map(t_list *list, t_data *data);
 
@@ -84,5 +84,11 @@ void	ft_putstr(char const *str);
 void ft_printmap(char **map);
 
 void	ft_fillit(int argc, char** argv);
+
+
+
+
+static void	ft_put_positive(int n);
+void		ft_putnbr(int n);
 
 #endif

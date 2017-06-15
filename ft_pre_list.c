@@ -87,11 +87,14 @@ t_list	*ft_pre_buf(char *buf, t_list *list, int ret)
 				n++; /* check if there is only 4 # in a tetr */
 			}
 			z++;
-			if (n > 4)
-				return (NULL);
 		}
 		 /*I need something mor here */
 	}
+	// if (n != 4)
+	// {
+	// 	ft_putnbr(n);
+	// 	return (NULL);
+	// }
 	return (list);
 }
 

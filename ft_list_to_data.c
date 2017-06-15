@@ -24,9 +24,9 @@ t_data	*ft_init_data(t_data *data)
 		return (NULL);
 	/*init data->point[]  --> min i, min j, max i, max j */
 	data->point[0] = 9;
-	data->point[0] = 9;
-	data->point[0] = 0;
-	data->point[0] = 0;
+	data->point[1] = 9;
+	data->point[2] = 0;
+	data->point[3] = 0;
 	i = -1;
 	while (++i < 4)
 	{
@@ -50,9 +50,9 @@ t_data	*ft_pre_newdata(t_data *data)
 	if (!newdata)
 		return (NULL);
 	newdata->point[0] = 9;
-	newdata->point[0] = 9;
-	newdata->point[0] = 0;
-	newdata->point[0] = 0;
+	newdata->point[1] = 9;
+	newdata->point[2] = 0;
+	newdata->point[3] = 0;
 	i = -1;
 	while (++i < 4)
 	{
