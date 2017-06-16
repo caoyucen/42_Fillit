@@ -49,6 +49,25 @@ void	ft_putstr(char const *str)
 	return ;
 }
 
+// void		ft_putnbr(int n)
+// {
+// 	if (n == -2147483648)
+// 	{
+// 		ft_putstr("-2147483648");
+// 		return ;
+// 	}
+// 	if (n == 0)
+// 	{
+// 		ft_putchar('0');
+// 		return ;
+// 	}
+// 	if (n < 0)
+// 	{
+// 		ft_putchar('-');
+// 		n = -n;
+// 	}
+// }
+
 void ft_printmap(char **map)
 {
 	int i;

@@ -145,8 +145,8 @@ t_list	*ft_pre_buf(char *buf, t_list *list, int ret)
 	}
 	if (n != 4)
 	{
-		ft_putnbr(n);
-		ft_putchar('\n');
+		// ft_putnbr(n);
+		// ft_putchar('\n');
 		return (NULL);
 	}
 	if (ft_invaild_list(list) == 0)
