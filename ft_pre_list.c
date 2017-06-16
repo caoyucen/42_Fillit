@@ -56,6 +56,60 @@ t_list	*ft_pre_newlist(t_list *list)
 	return (list);
 }
 
+int		ft_invaild_list_around(t_list *list, int i, int j)
+{
+	int n;
+
+	n = 0;
+	if (list->tetr[i - 1][j] == '#')
+		n++;
+	if (list->tetr[i + 1][j] == '#')
+		n++;
+	if (list->tetr[i][j + 1] == '#')
+		n++;
+	if (list->tetr[i][j - 1] == '#')
+		n++;
+	/*mark ft_putstr("whilc list: ");
+	ft_putnbr(num);
+	ft_putstr(" i is : ");
+	ft_putnbr(i);
+	ft_putstr(" j is : ");
+	ft_putnbr(j);
+	ft_putstr(" around is : ");
+	ft_putnbr(n);
+	ft_putchar('\n'); */
+	return (n);
+}
+
+int		ft_invaild_list(t_list *list)
+{
+	int i;
+	int j;
+	int n;
+	int temp;
+
+	n = 0;
+	i = -1;
+	while (++i < 4)
+	{
+		j = -1;
+		while (++j < 4)
+		{
+			if (list->tetr[i][j] == '#')
+			{
+				temp = 0;
+				if (!(temp = ft_invaild_list_around(list, i, j)))
+					return (0);
+				if (temp == 1)
+					n++;
+			}
+		}
+	}
+	if (n == 4)
+		return (0);
+	return (1);
+}
+
 t_list	*ft_pre_buf(char *buf, t_list *list, int ret)
 {
 	int		i;
@@ -85,11 +139,9 @@ t_list	*ft_pre_buf(char *buf, t_list *list, int ret)
 			if (list->tetr[i][j] == '#')
 			{
 				n++; /* check if there is only 4 # in a tetr */
-
 			}
 			z++;
 		}
-		 /*I need something mor here */
 	}
 	if (n != 4)
 	{
@@ -97,6 +149,8 @@ t_list	*ft_pre_buf(char *buf, t_list *list, int ret)
 		ft_putchar('\n');
 		return (NULL);
 	}
+	if (ft_invaild_list(list) == 0)
+		return (NULL);
 	return (list);
 }
 
