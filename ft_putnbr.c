@@ -13,16 +13,6 @@
 # include "fillit.h"
 # include "global.h"
 
-static void	ft_put_positive(int n)
-{
-	if (n < 10)
-	{
-		ft_putchar(n + 48);
-		return ;
-	}
-	ft_put_positive(n / 10);
-	ft_putchar(n % 10 + 48);
-}
 
 void		ft_putnbr(int n)
 {
@@ -41,5 +31,4 @@ void		ft_putnbr(int n)
 		ft_putchar('-');
 		n = -n;
 	}
-	ft_put_positive(n);
 }

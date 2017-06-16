@@ -88,7 +88,6 @@ void	ft_fillit(int argc, char** argv);
 
 
 
-static void	ft_put_positive(int n);
 void		ft_putnbr(int n);
 
 #endif

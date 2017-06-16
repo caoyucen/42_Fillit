@@ -21,7 +21,7 @@ all: $(NAME)
 
 $(NAME):
 	gcc -Wall -Wextra -Werror -c $(SRC) -I $(HEADER)
-	gcc -Wall -Wextra -Werror *.o -o $(NAME) main.c
+	gcc -Wall -Wextra -Werror *.o -o $(NAME)
 
 
 clean:
