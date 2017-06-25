@@ -17,15 +17,15 @@ int	ft_minmapsize(int num)
 {
 	if (num == 1)
 		return (2);
-	if (num == 2)
+	if (num <= 2)
 		return (3);
-	if (num == 4)
+	if (num <= 4)
 		return (4);
-	if (num == 6)
+	if (num <= 6)
 		return (5);
-	if (num == 9)
+	if (num <= 9)
 		return (6);
-	if (num == 12)
+	if (num <= 12)
 		return (7);
 	if (num <= 16)
 		return (8);
@@ -208,6 +208,10 @@ char	**ft_checkmap_samemapsize(t_data *data, int mapsize, char **map)
 	int		i;
 	int		j;
 
+
+	// ft_putstr("mapsize is: ");
+	// ft_putnbr(mapsize);
+	// ft_putchar('\n');
 	i = -1;
 	while (++i < mapsize)
 	{
@@ -219,9 +223,6 @@ char	**ft_checkmap_samemapsize(t_data *data, int mapsize, char **map)
 		}
 	}
 
-	/*mark */
-	// ft_putstr("all done, need to mapsize++\n");
-
 	return (NULL);
 }
 
@@ -231,6 +232,9 @@ char	**ft_give_me_map(t_list *list, t_data *data)
 	char	**map;
 
 	mapsize = ft_minmapsize(num); /* min mapsize, then add it one by one */
+	// ft_putstr("minmapsize is: ");
+	// ft_putnbr(mapsize);
+	// ft_putchar('\n');
 	data = ft_give_me_data(list, data);
 	map = ft_init_map(mapsize);
 

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_fillit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ycao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 11:52:10 by ycao              #+#    #+#             */
-/*   Updated: 2017/06/06 11:52:15 by ycao             ###   ########.fr       */
+/*   Updated: 2017/06/24 16:09:53 by ycao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fillit.h"
-# include "global.h"
+#include "fillit.h"
+#include "global.h"
 
-void init_global()
+void	init_global(void)
 {
 	int i;
 
-	num = 0;
+	g_num = 0;
 	i = 0;
 	while (i < 26)
 	{
-		letter[i] = 'A' + i;
+		g_letter[i] = 'A' + i;
 		i++;
 	}
 }
@@ -49,15 +49,7 @@ void	ft_putstr(char const *str)
 	return ;
 }
 
-void		ft_putnbr(int n)
-{
-	char c;
-
-	c = '0' + n;
-	ft_putchar(c);
-}
-
-void ft_printmap(char **map)
+void	ft_printmap(char **map)
 {
 	int i;
 	int j;
@@ -76,12 +68,11 @@ void ft_printmap(char **map)
 	}
 }
 
-
-void	ft_fillit(int argc, char** argv)
+void	ft_fillit(int argc, char **argv)
 {
 	t_list	*list;
 	t_data	*data;
-	char		**map;
+	char	**map;
 
 	list = NULL;
 	data = NULL;
@@ -90,14 +81,13 @@ void	ft_fillit(int argc, char** argv)
 	init_global();
 	if (argc == 2)
 	{
-
 		if ((list = ft_pre_openfile(argv[1], list)) != NULL)
 		{
 			map = ft_give_me_map(list, data);
 			ft_printmap(map);
-			return;
+			return ;
 		}
 	}
 	ft_putstr("error\n");
-	return;
+	return ;
 }

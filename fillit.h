@@ -85,6 +85,6 @@ void ft_printmap(char **map);
 
 void	ft_fillit(int argc, char** argv);
 
-// void		ft_putnbr(int n);
+void		ft_putnbr(int n);
 
 #endif
